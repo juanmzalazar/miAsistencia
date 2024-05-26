@@ -1,0 +1,55 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>miAsistencia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Font Awesome CSS -->
+    <script src="https://kit.fontawesome.com/963b7f0d7e.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+
+<body>
+    <a href="javascript:" class="floating-button" id="scroll-to-start">
+        <i class="fa-solid fa-chevron-left"></i>
+    </a>
+
+    <div class="container">
+        <div class="buttons" id="buttonsContainer">
+            <button id="primerBoton">1ro B</button>
+            <button id="tercerBoton">3ro B</button>
+            <button id="volverBoton" style="display: none;">Volver</button>
+        </div>
+
+        <div id="tablaContainer" class="scrollable-table">
+            <table id="tablaAsistencia">
+                <thead>
+                    <!-- Aquí se agregarán los encabezados desde el css -->
+                </thead>
+                <tbody>
+                    <!-- Aquí se agregarán las filas vacías -->
+                    <!-- Repite según la cantidad deseada de filas -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <a href="javascript:" class="floating-button" id="scroll-to-start">
+        <i class="fa-solid fa-chevron-left"></i>
+    </a>
+
+    <a href="javascript:" class="floating-button" id="return-to-top"><i class="fa-solid fa-chevron-up"></i></a>
+
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>

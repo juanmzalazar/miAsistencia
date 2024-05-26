@@ -1,0 +1,83 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Contenedor principal */
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Botones */
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  /* Tabla responsiva */
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  #tablaAsistencia {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #tablaAsistencia th, #tablaAsistencia td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #tablaAsistencia th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  /* Media queries para pantallas pequeñas */
+  @media (max-width: 600px) {
+    .container {
+      width: 100%;
+      padding: 0;
+    }
+  
+    #tablaAsistencia, #tablaAsistencia thead, #tablaAsistencia tbody, #tablaAsistencia th, #tablaAsistencia td, #tablaAsistencia tr {
+      display: block;
+    }
+  
+    #tablaAsistencia thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  
+    #tablaAsistencia tr {
+      border: 1px solid #ccc;
+    }
+  
+    #tablaAsistencia td {
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%;
+    }
+  
+    #tablaAsistencia td:before {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      content: attr(data-title);
+      color: #000;
+      font-weight: bold;
+    }
+  }
+  

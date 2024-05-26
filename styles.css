@@ -1,0 +1,302 @@
+/* styles.css */
+/* Estilos generales del body */
+body {
+    user-select: none;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1.6rem;
+    color: #333;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+#tablaContainer {
+    /* max-width: 900px; */
+    margin: 2rem auto;
+    background-color: transparent;
+}
+
+/* Estilos de la tabla */
+#tablaAsistencia {
+    width: 100%;
+    table-layout: fixed;
+    white-space: nowrap;
+    margin: 0;
+    border: none;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed; 
+       
+}
+
+/* Encabezados */
+#tablaAsistencia thead th {
+    top: 0;
+    z-index: 10;
+    border: 1px solid #ccc;
+    border-left: 0;
+}
+
+/* Filas del cuerpo de la tabla */
+#tablaAsistencia tbody tr {
+    background: white;
+    height: 40px;
+}
+
+#tablaAsistencia  th {
+    background-color: whitesmoke;    
+    height: 20px;
+}
+
+.fondoBlanco { /* Para efecto scroll */
+    background-color: white;
+    border-right: 1px solid #ccc;
+}
+
+/* Celdas clickeables */
+#tablaAsistencia tbody td:nth-child(n+3) {
+    cursor: pointer;
+}
+
+.no-click {
+    pointer-events: none;
+}
+
+.scrollable-table {
+    overflow-x: auto;
+    max-width: 100%;
+
+}
+
+/* Estilos generales de las celdas */
+#tablaAsistencia th {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#tablaAsistencia th, #tablaAsistencia td {
+    border-right: 1px solid #ccc;
+    padding: 0.5rem;
+}
+
+#tablaAsistencia th:last-child, #tablaAsistencia td:last-child {
+    border-right: 0;
+}
+
+#tablaAsistencia td {
+    border-bottom: 1px solid #ccc;
+}
+
+/* Ancho fijo para columnas específicas */
+th:nth-child(1), td:nth-child(1) {
+    width: 20px;
+}
+
+th:nth-child(2), td:nth-child(2) {
+    width: 300px;
+    text-align: left;
+}
+
+th:nth-child(n+3), td:nth-child(n+3) {
+    width: 45px;
+    text-align: center;
+}
+
+/* Botones */
+.buttons {
+    width: auto;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 10px;
+    margin: 0 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 24px;
+    background-color: #007bff;
+    color: white;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.active-button {
+    background-color: blue;
+    color: white;
+}
+
+/* Modo de ingreso de nota */
+.fecha-clickable {
+    cursor: pointer;
+}
+
+.fecha-clickable.clicked {
+    background-color: orange;
+    color: white;
+}
+
+/* Popup para ingreso de nota */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+}
+
+.popup input {
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+.popup input[type="number"] {
+    font-size: 24px;
+    text-align: center;
+    width: 60px;
+    margin-bottom: 10px;
+    opacity: 1;
+}
+
+.popup button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin: 5px;
+    height: 40px;
+}
+
+.button-cancel {
+    background-color: red;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: white;
+}
+
+.button-cancel .fa-trash {
+    font-size: 20px;
+}
+
+.button-ok {
+    background-color: green;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+.button-ok .fa-check {
+    font-size: 20px;
+}
+
+
+/* Columnas sticky */
+.no-mover {
+    position: sticky;
+    left: 0;    
+    z-index: 100;
+    border-right: 1px solid black; /* Asegurar borde derecho visible */
+}
+
+/* Segunda columna sticky */
+.no-mover:nth-child(2) {
+    left: 37px; /* Ajustar según el ancho de la primera columna */
+    z-index: 200;    
+    border-right: 1px solid black; /* Asegurar borde derecho visible */
+}
+
+/* Encabezados sticky */
+thead th.no-mover {
+    z-index: 100;
+    top: 0;
+    background-color: white;    
+}
+
+
+/* Botones flotantes */
+
+.floating-button {
+    position: fixed; /* Asegura que el botón esté fijo en la pantalla */
+    background: rgba(110, 110, 110, 0.8);
+    width: 50px; /* Ancho fijo */
+    height: 50px; /* Altura fija */
+    display: none;
+
+    text-decoration: none;
+    border-radius: 35px;
+    transition: all 0.3s ease;
+    z-index: 150;
+}
+
+.floating-button i { /* el 'chevron' dentro del boton flotante */
+    color: #fff;
+    position: absolute; /* Posiciona el icono absolutamente dentro del botón. */
+    left: 50%; /* Coloca el icono en  */
+    top: 50%; /* el centro del botón. */
+    transform: translate(-50%, -50%); /* Ajusta la posición del icono para que esté exactamente centrado */
+    font-size: 20px; /* Tamaño del icono */
+    transition: all 0.3s ease;
+}
+
+.floating-button:hover {
+    background: rgb(50, 50, 50);    
+}
+
+/* Botón "Ir al principio de la tabla" */
+#scroll-to-start {
+    top: calc(50% - 25px); /* Coloca el botón verticalmente en el centro (ajustado a la mitad del tamaño del botón) */
+    right: 20px; /* Espacio desde la parte derecha */
+}
+
+/* Botón "Volver a la parte superior de la Tabla" */
+
+#return-to-top {
+    bottom: 20px; /* Espacio desde la parte inferior */
+    right: calc(50% - 25px); /* Coloca el botón horizontalmente en el centro (ajustado a la mitad del tamaño del botón) */
+
+}
+
+
+/* Media queries para diferentes tamaños de pantalla */
+@media screen and (max-width: 768px) {
+    /* Estilos para pantallas más pequeñas, como teléfonos móviles */
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Estilos para tablets y dispositivos con pantallas medianas */
+}
+
+@media screen and (min-width: 1025px) {
+    /* Estilos para pantallas más grandes, como computadoras de escritorio */
+}
