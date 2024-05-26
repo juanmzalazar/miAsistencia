@@ -588,3 +588,28 @@ $(document).ready(function() {
         }, 500);
     });
 });
+
+
+// JavaScript para manejar el evento de clic
+document.addEventListener('DOMContentLoaded', () => {
+    const invisibleButton = document.getElementById('invisibleButton');
+    const popup = document.getElementById('popupEgg');
+    const popupBackground = document.getElementById('popupEggBackground');
+    let clickCount = 0;
+  
+    invisibleButton.addEventListener('click', () => {
+        clickCount++;
+        console.log('clickCount=',clickCount);
+        if (clickCount === 3) {
+            popup.style.display = 'block';
+            popupBackground.style.display = 'block';
+            clickCount = 0; // Reiniciar el contador de clics
+          }
+        });
+  
+    // Ocultar el popup al hacer clic fuera de la imagen
+    popupBackground.addEventListener('click', () => {
+        popup.style.display = 'none';
+        popupBackground.style.display = 'none';
+    });
+});

@@ -293,6 +293,43 @@ button:hover {
 
 }
 
+  /* Estilo del botón invisible */
+  #invisibleButton {
+    display: inline-block;
+    width: 10px; /* Ajusta el tamaño según sea necesario */
+    height: 50px; /* Ajusta el tamaño según sea necesario */
+    background: transparent;
+    border: none;
+    position: absolute; /* Ajusta según sea necesario */
+    z-index: 5;
+  }
+
+  /* Estilo del popup */
+  #popupEgg {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: transparent;
+    /* border: 1px solid #ccc; */
+    padding: 20px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+  }
+
+  /* Fondo oscuro para el popup */
+  #popupEggBackground {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
 
 /* Media queries para diferentes tamaños de pantalla */
 @media screen and (max-width: 768px) {
@@ -306,3 +343,4 @@ button:hover {
 @media screen and (min-width: 1025px) {
     /* Estilos para pantallas más grandes, como computadoras de escritorio */
 }
+
