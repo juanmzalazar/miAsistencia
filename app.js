@@ -3,23 +3,17 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getDatabase, ref, get, set } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
 
-async function getFirebaseConfig() {
-    const response = await fetch('/.netlify/functions/firebaseConfig');
-    const config = await response.json();
-    return config;
-}
+// Configuración de Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyCW9-0b_cOtIR0cZd68qyvJw3k8oBuwf2U",
+    authDomain: "asistencia-24d4f.firebaseapp.com",
+    databaseURL: "https://asistencia-24d4f-default-rtdb.firebaseio.com",
+    projectId: "asistencia-24d4f",
+    storageBucket: "asistencia-24d4f.appspot.com",
+    messagingSenderId: "280832142525",
+    appId: "1:280832142525:web:8ce3ef23e0379eb04c1bd4"
+};
 
-getFirebaseConfig().then(config => {
-    const firebaseConfig = {
-        apiKey: config.apiKey,
-        authDomain: config.authDomain,
-        projectId: config.projectId,
-        storageBucket: config.storageBucket,
-        messagingSenderId: config.messagingSenderId,
-        appId: config.appId,
-        measurementId: config.measurementId,
-    };
-});
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
