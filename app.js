@@ -5,14 +5,13 @@ import { getDatabase, ref, get, set } from 'https://www.gstatic.com/firebasejs/1
 
 // Configuración de Firebase
 const firebaseConfig = {
-    
-    apiKey: process.env.FIREBASE_API_KEY, // Utiliza la clave de API almacenada en la variable de entorno */
-    authDomain: "asistencia-24d4f.firebaseapp.com",
-    databaseURL: "https://asistencia-24d4f-default-rtdb.firebaseio.com",
-    projectId: "asistencia-24d4f",
-    storageBucket: "asistencia-24d4f.appspot.com",
-    messagingSenderId: "280832142525",
-    appId: "1:280832142525:web:8ce3ef23e0379eb04c1bd4"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 // Inicializar Firebase
