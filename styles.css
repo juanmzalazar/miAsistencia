@@ -1,17 +1,18 @@
 /* styles.css */
+
 /* Estilos generales del body */
-body {
+html, body {
     user-select: none;
     font-family: Arial, sans-serif;
     margin: 0;
-    line-height: 1.6rem;
-    color: #333;
+    line-height: 1.6rem;    
     padding: 0;
+    height: 100%;
+    overflow: hidden;
 }
 
 /* Contenedor principal */
 .container {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,9 +23,16 @@ body {
 }
 
 #tablaContainer {
-    /* max-width: 900px; */
-    margin: 2rem auto;
-    background-color: transparent;
+    width: 100%;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    overflow-y: auto;
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    position: relative;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
 /* Estilos de la tabla */
@@ -37,26 +45,21 @@ body {
     border-collapse: separate;
     border-spacing: 0;
     table-layout: fixed; 
-       
 }
 
 /* Encabezados */
-#tablaAsistencia thead th {
-    top: 0;
-    z-index: 10;
+
+#tablaAsistencia thead th {    
     border: 1px solid #ccc;
     border-left: 0;
+    background-color: whitesmoke;    
+    height: 20px;
 }
 
 /* Filas del cuerpo de la tabla */
 #tablaAsistencia tbody tr {
     background: white;
     height: 40px;
-}
-
-#tablaAsistencia  th {
-    background-color: whitesmoke;    
-    height: 20px;
 }
 
 .fondoBlanco { /* Para efecto scroll */
@@ -74,7 +77,7 @@ body {
 }
 
 .scrollable-table {
-    overflow-x: auto;
+    /* overflow-x: auto; */
     max-width: 100%;
 
 }
@@ -221,27 +224,30 @@ button:hover {
 }
 
 
-/* Columnas sticky */
-.no-mover {
+/* Fila de encabezados sticky */
+#tablaAsistencia thead {
     position: sticky;
-    left: 0;    
-    z-index: 100;
-    border-right: 1px solid black; /* Asegurar borde derecho visible */
-}
-
-/* Segunda columna sticky */
-.no-mover:nth-child(2) {
-    left: 37px; /* Ajustar según el ancho de la primera columna */
-    z-index: 200;    
-    border-right: 1px solid black; /* Asegurar borde derecho visible */
-}
-
-/* Encabezados sticky */
-thead th.no-mover {
-    z-index: 100;
     top: 0;
-    background-color: white;    
+    z-index: 105;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4); /* Añade una sombra para mayor claridad */
 }
+
+/* Columna 1 sticky */
+#tablaAsistencia td:nth-child(1),
+#tablaAsistencia th:nth-child(1) {
+    position: sticky;
+    left: 0;
+    z-index: 101; /* Asegura que esté por encima de los encabezados */
+}
+
+/* Columna 2 sticky */
+#tablaAsistencia td:nth-child(2),
+#tablaAsistencia th:nth-child(2) {
+    position: sticky;
+    left: 37px; /* Ajustar según el ancho de la primera columna */
+    z-index: 102; /* Asegura que esté por encima de los encabezados y la columna 1 */
+}
+
 
 
 /* Botones flotantes */

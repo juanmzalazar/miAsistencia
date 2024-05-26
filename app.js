@@ -1,11 +1,12 @@
-// punto de retorno seguro 
+// app.js
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getDatabase, ref, get, set } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
 
 // Configuración de Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyCW9-0b_cOtIR0cZd68qyvJw3k8oBuwf2U",
+    
+    apiKey: process.env.FIREBASE_API_KEY, // Utiliza la clave de API almacenada en la variable de entorno */
     authDomain: "asistencia-24d4f.firebaseapp.com",
     databaseURL: "https://asistencia-24d4f-default-rtdb.firebaseio.com",
     projectId: "asistencia-24d4f",
@@ -21,7 +22,7 @@ const database = getDatabase(app);
 // Declarar un array para almacenar los valores de las fechas
 let fechas = [];
 
-// Definir las fechas para cada curso
+// Definir las fechas para cada curso para el año 2024
 const fechas_1roB = ['26-02', '04-03', '11-03', '18-03', '25-03', '01-04', '08-04', '15-04', '22-04', '29-04','06-05', '13-05', '20-05', '27-05', '03-06', '10-06', '17-06', '24-06', '01-07', '08-07', '15-07', '22-07', '29-07', '05-08', '12-08', '19-08', '26-08', '02-09', '09-09', '16-09','23-09', '30-09', '07-10', '14-10', '21-10', '28-10', '04-11', '11-11', '18-11', '25-11','02-12', '09-12', '16-12'];
 const fechas_3roB = ['01-03', '08-03', '15-03', '22-03', '29-03', '05-04', '12-04', '19-04', '26-04','03-05', '10-05', '17-05', '24-05', '31-05', '07-06', '14-06', '21-06', '28-06','05-07', '12-07', '19-07', '26-07', '02-08', '09-08', '16-08', '23-08', '30-08','06-09', '13-09', '20-09', '27-09', '04-10', '11-10', '18-10', '25-10', '01-11','08-11', '15-11', '22-11', '29-11', '06-12', '13-12', '20-12'];
 
@@ -143,10 +144,13 @@ function manejarClickCeldaNota(event) {
 
     function actualizarCelda() {
         const valor = parseInt(input.value, 10);
+        console.log('valor=',valor);
         if (valor >= 1 && valor <= 10) {
+            console.log('Guardé la Nota: ', valor);
             guardarNota(input.value);
         } else {
             // Restaurar el valor original en la celda si el valor no es válido
+            console.log('Restauré el oldValue: ', oldValue);
             cell.innerText = oldValue;
             cerrarPopup();
         }
@@ -194,10 +198,7 @@ function manejarClickCeldaNota(event) {
         event.stopPropagation();
     });
 }
-
-
 // FIN manejarClickCeldaNota
-
 
 
 // Función para guardar el registro de asistencia en Firebase
@@ -212,6 +213,7 @@ function guardarRegistroAsistencia(estudianteId, fecha, asistencia) {
         });
 }
 
+
 // Función para guardar el registro de asistencia en Firebase
 function guardarRegistroNota(estudianteId, fecha, nota) {
     const registroRef = ref(database, `estudiantes/${estudianteId}/notas/${fecha}`);
@@ -223,7 +225,6 @@ function guardarRegistroNota(estudianteId, fecha, nota) {
             console.error('Error al actualizar el registro de Nota:', error);
         });
 }
-
 
 
 // Función para obtener la columna correspondiente a una fecha invertida
@@ -308,7 +309,6 @@ function manejarClickCelda(event) {
 }
 
 
-
 // Función para cambiar el comportamiento de las celdas en una columna
 function cambiarComportamientoCeldas(colIndex) {
     console.log('cambiarComportamientoCeldas');
@@ -332,6 +332,7 @@ function cambiarComportamientoCeldas(colIndex) {
     });
 }
 
+
 // Función para generar la tabla en blanco al cargar la página
 function generarTablaEnBlanco(fechas) {
     const tablaBody = document.querySelector('#tablaAsistencia tbody');
@@ -349,6 +350,7 @@ function generarTablaEnBlanco(fechas) {
     encabezados.forEach((encabezado, index) => {
         const th = document.createElement('th');
         th.textContent = encabezado;
+        
 
         if (index >= 2) { // Solo las columnas de fecha serán clickeables
             th.classList.add('fecha-clickable');
@@ -358,9 +360,13 @@ function generarTablaEnBlanco(fechas) {
             });
         } else {
             th.classList.add('no-click');
-            th.classList.add('no-mover');            
+            /* th.classList.add('no-mover'); */
         }
+        
+        // Aplicar la clase 'no-mover-fila' a los encabezados        
+        
         encabezadosRow.appendChild(th);
+        
     });
 
     tablaHead.appendChild(encabezadosRow);
@@ -372,24 +378,24 @@ function generarTablaEnBlanco(fechas) {
         const fila = document.createElement('tr');
 
         // Aplicar clase según si la fila es par o impar
-        if (i % 2 === 0) {
+/*         if (i % 2 === 0) {
             fila.classList.add('no-moverPar');
         } else {
             fila.classList.add('no-moverImpar');
-        }
+        } */
 
         for (let j = 0; j < encabezados.length; j++) {
             const celda = document.createElement('td');
             celda.textContent = ''; // Contenido vacío
             celda.classList.add('fondoBlanco');
             celda.classList.add('no-click'); // Hacer todas las celdas no-click por defecto
-            if (j < 2) {
+/*             if (j < 2) {
                 celda.classList.add('no-mover');
-            }
+            } */
             fila.appendChild(celda);
         }
     tablaBody.appendChild(fila);
-}
+    }
 
 }
 
@@ -475,7 +481,7 @@ function mostrarTabla(curso) {
                 if (notas) {
                     Object.entries(notas).forEach(([fecha, nota]) => {
                         const columnIndex = fechas.indexOf(fecha);
-                        if (columnIndex !== -1) {
+                        if (columnIndex !== -1 && nota !== "") {
                             fila.cells[columnIndex + 2].textContent = nota; // Sumar 2 para compensar las primeras dos celdas
                         }
                     });
@@ -559,7 +565,8 @@ $(document).ready(function() {
         }
     });
     
-    $(window).scroll(function () {
+    $('.scrollable-table').scroll(function () {
+    /* $(window).scroll(function () { */
         if ($(this).scrollTop() >= 50) { // Si la página se desplaza verticalmente más de 50px
             $('#return-to-top').fadeIn(200); // Aparece el botón
         } else {
@@ -577,7 +584,7 @@ $(document).ready(function() {
 
     // Al hacer clic en el botón "ir al principio"
     $('#return-to-top').click(function () {
-        $('body, html').animate({
+        $('.scrollable-table').animate({
             scrollTop: 0 // Desplazarse hacia arriba
         }, 500);
     });
